@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inkwell — Where Stories Live</title>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/home.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<!-- Supabase JS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">Inkwell<span class="logo-dot">.</span></div>
+  <ul>
+    <li><a href="/stories">Discover</a></li>
+    <li><a href="/publish">Publish</a></li>
+    <li><a href="#features">Features</a></li>
+    <li id="nav-auth-links">
+      <a href="/auth/login">Log In</a>
+      <a href="/auth/signup" class="nav-cta">Start Writing</a>
+    </li>
+    <li id="nav-user-menu" style="display:none">
+      <span id="nav-username"></span>
+      <a href="/dashboard">My Dashboard</a>
+      <a href="/publish" class="nav-cta">Publish</a>
+      <a href="#" id="nav-logout">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">A Home for Storytellers</div>
+    <h1>Your stories<br>deserve to be <em>read.</em></h1>
+    <p class="hero-sub">Inkwell is a sanctuary for writers. Upload your work, find your readers, and let your words travel further than you imagined.</p>
+    <div class="hero-actions">
+      <a href="/publish" class="btn-primary">Publish a Story</a>
+      <a href="/stories" class="btn-secondary">Browse Stories</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="book-stack">
+      <div class="book book-1"><span class="book-title">THE LAST LIGHTHOUSE</span></div>
+      <div class="book book-2"><span class="book-title">EMBER &amp; ASH</span></div>
+      <div class="book book-3"><span class="book-title">SALT OF THE EARTH</span></div>
+      <div class="book book-4"><span class="book-title">BETWEEN THE STARS</span></div>
+      <div class="book book-5"><span class="book-title">THE CARTOGRAPHER</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">12K+</div><div class="stat-label">Stories Published</div></div>
+  <div class="stat"><div class="stat-num">48K</div><div class="stat-label">Active Readers</div></div>
+  <div class="stat"><div class="stat-num">2.1M</div><div class="stat-label">Words Read Daily</div></div>
+  <div class="stat"><div class="stat-num">140+</div><div class="stat-label">Genres &amp; Tags</div></div>
+</div>
+
+<!-- FEATURES -->
+<section id="features" class="features-section">
+  <div class="section-label">Why Inkwell</div>
+  <div class="section-title">Built for writers,<br>loved by readers</div>
+  <p class="section-sub">Every feature is crafted to let you focus on what matters — the writing.</p>
+  <div class="features-grid">
+    <div class="feature"><div class="feature-icon">✦</div><h3>Clean Reading Experience</h3><p>Distraction-free reader with beautiful typography and dark mode support.</p></div>
+    <div class="feature"><div class="feature-icon">🔍</div><h3>Editorial Review</h3><p>Every story is reviewed before publishing, ensuring quality readers can trust.</p></div>
+    <div class="feature"><div class="feature-icon">📊</div><h3>Author Analytics</h3><p>See reads, reading time, and where your audience is coming from.</p></div>
+    <div class="feature"><div class="feature-icon">💬</div><h3>Thoughtful Comments</h3><p>Paragraph-level annotations from readers who finished your story.</p></div>
+    <div class="feature"><div class="feature-icon">🔖</div><h3>Reading Lists</h3><p>Readers curate shelves. Your story travels with them everywhere.</p></div>
+    <div class="feature"><div class="feature-icon">🔒</div><h3>You Own Your Work</h3><p>Publishing here transfers no rights. Your story remains entirely yours.</p></div>
+  </div>
+</section>
+
+<!-- RECENT STORIES (loaded dynamically) -->
+<section class="recent-stories-section" style="padding:80px 80px;background:var(--cream)">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+    <div>
+      <div class="section-label">Fresh from the Press</div>
+      <div class="section-title">Recent Stories</div>
+    </div>
+    <a href="/stories" class="btn-secondary">Browse All →</a>
+  </div>
+  <div id="home-stories-grid" class="stories-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px">
+    <p style="color:var(--muted);font-style:italic">Loading stories…</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Inkwell<span class="logo-dot">.</span></div>
+      <p>A quiet corner of the internet where stories breathe.</p>
+    </div>
+    <div class="footer-col"><h5>Discover</h5><ul><li><a href="/stories">New Stories</a></li><li><a href="/stories">All Genres</a></li></ul></div>
+    <div class="footer-col"><h5>Writers</h5><ul><li><a href="/publish">Publish</a></li><li><a href="/auth/signup">Join</a></li></ul></div>
+    <div class="footer-col"><h5>Inkwell</h5><ul><li><a href="#">About</a></li><li><a href="#">Privacy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Inkwell. All stories belong to their authors.</p>
+  </div>
+</footer>
+
+<script src="/js/auth-state.js"></script>
+<script>
+// Load 3 most recent approved stories on homepage
+(async () => {
+  const GENRE_COLORS = {
+    'Fantasy':'card-thumb-1','Science Fiction':'card-thumb-3',
+    'Mystery & Thriller':'card-thumb-4','Romance':'card-thumb-5',
+    'Horror':'card-thumb-2','Literary Fiction':'card-thumb-6',
+    'Historical Fiction':'card-thumb-1','Short Story':'card-thumb-3',
+    'Poetry':'card-thumb-5','Non-Fiction':'card-thumb-6',
+  };
+  const FALLBACK = ['card-thumb-1','card-thumb-2','card-thumb-3'];
+
+  const grid = document.getElementById('home-stories-grid');
+  try {
+    const res  = await fetch('/api/stories');
+    const data = await res.json();
+    if (!res.ok || !Array.isArray(data) || data.length === 0) {
+      grid.innerHTML = `<p style="color:var(--muted);font-style:italic;grid-column:1/-1">
+        No stories published yet. <a href="/publish" style="color:var(--amber)">Be the first!</a>
+      </p>`;
+      return;
+    }
+    // Show only 3 most recent
+    const recent = data.slice(0, 3);
+    grid.innerHTML = recent.map((s, i) => {
+      const thumb  = GENRE_COLORS[s.genre] || FALLBACK[i % 3];
+      const author = s.author?.display_name || 'Anonymous';
+      const date   = new Date(s.approved_at || s.submitted_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+      const excerpt = s.synopsis ? (s.synopsis.length > 100 ? s.synopsis.slice(0,100)+'…' : s.synopsis) : '';
+      const esc = str => String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return `
+        <div class="story-card" onclick="window.location='/read?id=${s.id}'" style="cursor:pointer">
+          <div class="card-thumb ${thumb}">
+            <div class="thumb-title">${esc(s.title)}</div>
+            <div class="genre-badge">${esc(s.genre || 'Story')}</div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">${esc(s.title)}</div>
+            <div class="card-excerpt">${esc(excerpt)}</div>
+            <div class="card-meta">
+              <div class="card-author">by <strong>${esc(author)}</strong></div>
+              <div class="card-stats"><span>📅 ${date}</span></div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+  } catch(e) {
+    grid.innerHTML = '<p style="color:var(--muted);font-style:italic">Could not load stories.</p>';
+  }
+})();
+</script>
+</body>
+</html>

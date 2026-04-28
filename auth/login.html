@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In — Inkwell</title>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/auth/css/auth.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="auth-body">
+
+<div class="auth-split">
+  <!-- Left brand panel -->
+  <div class="auth-brand">
+    <a href="/" class="logo">Inkwell<span class="logo-dot">.</span></a>
+    <blockquote class="auth-quote">
+      "There is no greater agony than bearing an untold story inside you."
+      <cite>— Maya Angelou</cite>
+    </blockquote>
+  </div>
+
+  <!-- Right form panel -->
+  <div class="auth-panel">
+    <div class="auth-inner">
+      <h2 class="auth-title">Welcome back</h2>
+      <p class="auth-sub">Sign in to continue to Inkwell</p>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+
+        <div id="auth-error" class="form-msg error" style="display:none"></div>
+
+        <button type="submit" class="btn-primary btn-full" id="login-btn">Sign In</button>
+      </form>
+
+      <p class="auth-switch">Don't have an account? <a href="/auth/signup">Create one →</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="/auth/js/login.js"></script>
+</body>
+</html>

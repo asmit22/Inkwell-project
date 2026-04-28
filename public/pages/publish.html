@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publish — Inkwell</title>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/publish.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="logo" href="/">Inkwell<span class="logo-dot">.</span></a>
+  <ul>
+    <li><a href="/stories">Discover</a></li>
+    <li id="nav-auth-links">
+      <a href="/auth/login">Log In</a>
+      <a href="/auth/signup" class="nav-cta">Start Writing</a>
+    </li>
+    <li id="nav-user-menu" style="display:none">
+      <span id="nav-username"></span>
+      <a href="/dashboard">My Dashboard</a>
+      <a href="/publish" class="nav-cta">Publish</a>
+      <a href="#" id="nav-logout">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<main class="publish-main">
+  <!-- Auth gate — shown while checking session -->
+  <div id="auth-gate" class="auth-gate">
+    <div class="gate-inner">
+      <div class="section-label">Writers Only</div>
+      <h2 class="section-title">You need to be signed in<br>to publish a story</h2>
+      <p class="section-sub">Create a free account or log in to share your work with thousands of readers.</p>
+      <div class="hero-actions">
+        <a href="/auth/signup" class="btn-primary">Create Account</a>
+        <a href="/auth/login"  class="btn-secondary">Log In</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Publish form — shown only when authenticated -->
+  <div id="publish-wrap" style="display:none">
+    <div class="publish-header">
+      <div class="section-label">Share Your Work</div>
+      <h1 class="section-title">Publish a story</h1>
+      <p class="section-sub">Stories go through a short editorial review before going live — usually within 24 hours.</p>
+    </div>
+
+    <div class="publish-grid">
+      <form id="publish-form" class="upload-form" novalidate>
+        <div class="form-group">
+          <label for="title">Story Title *</label>
+          <input type="text" id="title" name="title" placeholder="The name of your masterpiece…" required>
+        </div>
+        <div class="form-group">
+          <label for="genre">Genre *</label>
+          <select id="genre" name="genre" required>
+            <option value="" disabled selected>Select a genre</option>
+            <option>Literary Fiction</option>
+            <option>Fantasy</option>
+            <option>Science Fiction</option>
+            <option>Mystery &amp; Thriller</option>
+            <option>Romance</option>
+            <option>Horror</option>
+            <option>Historical Fiction</option>
+            <option>Short Story</option>
+            <option>Poetry</option>
+            <option>Non-Fiction</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="synopsis">Synopsis * <span class="label-hint">(short description shown on the card)</span></label>
+          <textarea id="synopsis" name="synopsis" placeholder="A short description to hook your readers…" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="body">Full Story Text * <span class="label-hint">(readers read this directly on the site)</span></label>
+          <textarea id="body" name="body" placeholder="Paste or type your full story here…
+
+Readers will see this inline — no downloading needed. Paragraphs are separated by blank lines." style="min-height:360px;font-family:'Lora',serif;font-size:0.97rem;line-height:1.8" required></textarea>
+          <div class="body-counter"><span id="word-count">0</span> words · <span id="read-time">0 min read</span></div>
+        </div>
+        <div class="form-group">
+          <label>Original File <span class="label-hint optional-tag">Optional</span> <span class="label-hint">(.txt, .docx, .pdf · max 10MB · for admin reference)</span></label>
+          <div class="drop-zone" id="dropZone">
+            <div class="drop-icon">📎</div>
+            <div class="drop-label">Drop a file here or click to attach</div>
+            <div class="drop-sub">Optional — only seen by our editorial team</div>
+            <p class="file-chosen" id="fileChosen"></p>
+            <input type="file" id="fileInput" name="manuscript" accept=".txt,.docx,.pdf">
+          </div>
+        </div>
+
+        <div id="form-error" class="form-msg error" style="display:none"></div>
+        <div id="form-success" class="form-msg success" style="display:none"></div>
+
+        <button type="submit" class="btn-primary btn-full" id="submit-btn">
+          ✦ Submit for Review
+        </button>
+        <p class="submit-note">Your story will not be visible to readers until approved by our editorial team.</p>
+      </form>
+
+      <!-- My stories sidebar -->
+      <div class="my-stories">
+        <h3>My Submissions</h3>
+        <div id="my-stories-list"><p class="loading-text">Loading…</p></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/js/auth-state.js"></script>
+<script src="/js/publish.js"></script>
+</body>
+</html>

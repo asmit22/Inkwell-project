@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading — Inkwell</title>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/reader.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="logo" href="/">Inkwell<span class="logo-dot">.</span></a>
+  <ul>
+    <li><a href="/stories">← All Stories</a></li>
+    <li id="nav-auth-links">
+      <a href="/auth/login">Log In</a>
+      <a href="/auth/signup" class="nav-cta">Start Writing</a>
+    </li>
+    <li id="nav-user-menu" style="display:none">
+      <span id="nav-username"></span>
+      <a href="/dashboard">My Dashboard</a>
+      <a href="/publish" class="nav-cta">Publish</a>
+      <a href="#" id="nav-logout">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<main id="reader-main">
+
+  <!-- Loading state -->
+  <div id="reader-loading" class="reader-loading">
+    <div class="loading-spinner"></div>
+    <p>Opening story…</p>
+  </div>
+
+  <!-- Error state -->
+  <div id="reader-error" class="reader-error" style="display:none">
+    <h2>Story not found</h2>
+    <p>This story may have been removed or is no longer available.</p>
+    <a href="/stories" class="btn-primary">Browse Stories</a>
+  </div>
+
+  <!-- Story content -->
+  <article id="reader-article" style="display:none">
+
+    <!-- Hero banner -->
+    <div id="reader-hero" class="reader-hero">
+      <div class="reader-hero-inner">
+        <div id="reader-genre" class="reader-genre"></div>
+        <h1 id="reader-title" class="reader-title"></h1>
+        <div class="reader-byline">
+          <span>by <strong id="reader-author"></strong></span>
+          <span class="reader-byline-dot">·</span>
+          <span id="reader-date"></span>
+          <span class="reader-byline-dot">·</span>
+          <span id="reader-time"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls bar -->
+    <div class="reader-controls">
+      <div class="reader-controls-inner">
+        <div class="font-controls">
+          <span class="controls-label">Text size</span>
+          <button class="font-btn" id="font-decrease">A−</button>
+          <button class="font-btn" id="font-increase">A+</button>
+        </div>
+        <div class="font-controls">
+          <span class="controls-label">Theme</span>
+          <button class="theme-btn" id="theme-light" title="Light">☀️</button>
+          <button class="theme-btn" id="theme-sepia" title="Sepia">📜</button>
+          <button class="theme-btn" id="theme-dark"  title="Dark">🌙</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Synopsis -->
+    <div class="reader-synopsis-wrap">
+      <div class="reader-synopsis-inner">
+        <p id="reader-synopsis" class="reader-synopsis"></p>
+      </div>
+    </div>
+
+    <!-- Story body -->
+    <div class="reader-body-wrap">
+      <div id="reader-body" class="reader-body">
+        <!-- Filled by JS -->
+      </div>
+
+      <!-- PDF viewer (if manuscript is PDF) -->
+      <div id="reader-pdf-wrap" style="display:none" class="reader-pdf-wrap">
+        <p class="pdf-note">📄 This story has an attached manuscript.</p>
+        <button class="btn-primary" id="open-pdf-btn">Open Full Manuscript</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="reader-footer">
+      <a href="/stories" class="btn-secondary">← Back to Stories</a>
+      <a href="/publish" class="btn-primary">Write Your Own</a>
+    </div>
+
+  </article>
+</main>
+
+<script src="/js/auth-state.js"></script>
+<script src="/js/reader.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — Inkwell</title>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/auth/css/auth.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="auth-body">
+
+<div class="auth-split">
+  <div class="auth-brand">
+    <a href="/" class="logo">Inkwell<span class="logo-dot">.</span></a>
+    <blockquote class="auth-quote">
+      "Start writing, no matter what. The water does not flow until the faucet is turned on."
+      <cite>— Louis L'Amour</cite>
+    </blockquote>
+  </div>
+
+  <div class="auth-panel">
+    <div class="auth-inner">
+      <h2 class="auth-title">Join Inkwell</h2>
+      <p class="auth-sub">Create your writer account — it's free</p>
+
+      <form id="signup-form" novalidate>
+        <div class="form-group">
+          <label for="display_name">Display Name</label>
+          <input type="text" id="display_name" name="display_name" placeholder="Your pen name or real name" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password <span class="label-hint">(min 8 characters)</span></label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required minlength="8" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="confirm">Confirm Password</label>
+          <input type="password" id="confirm" name="confirm" placeholder="••••••••" required autocomplete="new-password">
+        </div>
+
+        <div id="auth-error"   class="form-msg error"   style="display:none"></div>
+        <div id="auth-success" class="form-msg success" style="display:none"></div>
+
+        <button type="submit" class="btn-primary btn-full" id="signup-btn">Create Account</button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="/auth/login">Sign in →</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="/auth/js/signup.js"></script>
+</body>
+</html>

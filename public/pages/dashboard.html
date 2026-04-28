@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard — Inkwell</title>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/dashboard.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="logo" href="/">Inkwell<span class="logo-dot">.</span></a>
+  <ul>
+    <li><a href="/stories">Discover</a></li>
+    <li><a href="/publish">Publish</a></li>
+    <li id="nav-auth-links">
+      <a href="/auth/login">Log In</a>
+      <a href="/auth/signup" class="nav-cta">Start Writing</a>
+    </li>
+    <li id="nav-user-menu" style="display:none">
+      <span id="nav-username"></span>
+      <a href="/dashboard">My Dashboard</a>
+      <a href="/publish" class="nav-cta">Publish</a>
+      <a href="#" id="nav-logout">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div id="auth-gate" class="auth-gate" style="display:none">
+  <div class="gate-inner">
+    <h2 class="section-title">Sign in to continue</h2>
+    <a href="/auth/login" class="btn-primary">Log In</a>
+  </div>
+</div>
+
+<main class="dashboard-main" id="dashboard-wrap" style="display:none">
+  <div class="dashboard-header">
+    <div>
+      <div class="section-label">Your Library</div>
+      <h1 class="section-title">My Submissions</h1>
+      <p class="section-sub">Track the status of your stories and manage your author profile.</p>
+    </div>
+    <div class="header-stats">
+      <div class="stat-card">
+        <div class="stat-card-num" id="stat-total">0</div>
+        <div class="stat-card-label">Total Submitted</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-num" id="stat-approved" style="color:#4a6741">0</div>
+        <div class="stat-card-label">Approved</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-num" id="stat-pending" style="color:#c8832a">0</div>
+        <div class="stat-card-label">Pending</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="dashboard-tabs">
+    <button class="dashboard-tab active" data-filter="all">All Submissions</button>
+    <button class="dashboard-tab" data-filter="pending_review">Pending Review</button>
+    <button class="dashboard-tab" data-filter="approved">Published</button>
+    <button class="dashboard-tab" data-filter="rejected">Rejected</button>
+  </div>
+
+  <!-- Stories table -->
+  <div class="dashboard-table-wrap">
+    <table class="dashboard-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>Status</th>
+          <th>Submitted</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="stories-tbody">
+        <tr><td colspan="5" style="text-align:center;padding:40px;color:var(--muted);font-style:italic;">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Profile card -->
+  <section class="profile-section">
+    <div class="profile-header">
+      <div>
+        <div class="section-label">Author Profile</div>
+        <h2 class="section-title">Your Details</h2>
+      </div>
+      <button class="btn-secondary" id="edit-profile-btn">Edit Profile</button>
+    </div>
+
+    <div id="profile-view" class="profile-view">
+      <div class="profile-grid">
+        <div class="profile-field">
+          <label>Display Name</label>
+          <p id="profile-name">—</p>
+        </div>
+        <div class="profile-field">
+          <label>Email</label>
+          <p id="profile-email">—</p>
+        </div>
+        <div class="profile-field" style="grid-column:1/-1">
+          <label>Bio</label>
+          <p id="profile-bio" style="max-width:600px;line-height:1.6">No bio yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="profile-edit" class="profile-edit" style="display:none">
+      <form id="profile-form">
+        <div class="form-group">
+          <label for="edit-name">Display Name</label>
+          <input type="text" id="edit-name" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-bio">Bio <span class="label-hint">(optional, max 500 chars)</span></label>
+          <textarea id="edit-bio" maxlength="500"></textarea>
+        </div>
+        <div id="profile-error" class="form-msg error" style="display:none"></div>
+        <div class="profile-actions">
+          <button type="button" class="btn-secondary" id="cancel-profile-btn">Cancel</button>
+          <button type="submit" class="btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="/js/auth-state.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

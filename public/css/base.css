@@ -1,0 +1,183 @@
+/* ─────────────────────────────────────────
+   INKWELL — base.css
+   Shared tokens, reset, nav, buttons, footer
+   ───────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Lora:ital@0;1&display=swap');
+
+:root {
+  --ink:          #1a1209;
+  --parchment:    #f5f0e8;
+  --cream:        #faf7f2;
+  --amber:        #c8832a;
+  --amber-light:  #e8a84a;
+  --rust:         #8b3a1a;
+  --sage:         #4a6741;
+  --muted:        #7a6e5f;
+  --border:       #d4c9b5;
+  --shadow:       rgba(26,18,9,0.12);
+  --danger:       #c0392b;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; gap: 24px;
+  padding: 18px 48px;
+  background: rgba(250,247,242,0.93);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 900;
+  color: var(--ink); text-decoration: none;
+}
+.logo-dot { color: var(--amber); }
+nav ul { list-style: none; display: flex; align-items: center; gap: 28px; margin-left: auto; }
+nav ul li { display: flex; align-items: center; gap: 14px; }
+nav ul a {
+  font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+}
+nav ul a:hover { color: var(--ink); }
+#nav-username {
+  font-size: 0.88rem; font-weight: 600; color: var(--ink);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 6px 10px; background: var(--parchment);
+  border: 1px solid var(--border); border-radius: 2px;
+}
+.nav-cta {
+  background: var(--ink) !important; color: var(--parchment) !important;
+  padding: 9px 20px !important; border-radius: 2px;
+  font-size: 0.8rem !important;
+}
+.nav-cta:hover { background: var(--amber) !important; color: var(--ink) !important; }
+
+/* ── TYPOGRAPHY ── */
+.section-label {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px;
+  line-height: 1.15;
+}
+.section-sub {
+  font-family: 'Lora', serif; font-style: italic;
+  color: var(--muted); font-size: 1.05rem; line-height: 1.7;
+  max-width: 540px; margin-bottom: 40px;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--ink); color: var(--parchment);
+  padding: 14px 32px; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  font-weight: 500; letter-spacing: 0.04em;
+  transition: all 0.2s; text-decoration: none;
+}
+.btn-primary:hover { background: var(--amber); color: var(--ink); transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-block;
+  background: transparent; color: var(--ink);
+  padding: 13px 32px; border: 1.5px solid var(--border); cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  font-weight: 500; letter-spacing: 0.04em;
+  transition: all 0.2s; text-decoration: none;
+}
+.btn-secondary:hover { border-color: var(--ink); transform: translateY(-2px); }
+.btn-danger {
+  display: inline-block;
+  background: var(--danger); color: white;
+  padding: 12px 28px; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  font-weight: 500; transition: opacity 0.2s;
+}
+.btn-danger:hover { opacity: 0.85; }
+.btn-full { width: 100%; text-align: center; padding: 16px; font-size: 1rem; }
+
+/* ── FORM SHARED ── */
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+label {
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+}
+.label-hint { font-size: 0.7rem; text-transform: none; letter-spacing: 0; color: var(--border); }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background: white; border: 1.5px solid var(--border);
+  color: var(--ink); padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+  outline: none; transition: border-color 0.2s; width: 100%;
+  border-radius: 0;
+}
+input::placeholder, textarea::placeholder { color: var(--border); }
+input:focus, textarea:focus, select:focus { border-color: var(--amber); }
+textarea { min-height: 110px; resize: vertical; }
+select option { background: white; }
+
+.form-msg { padding: 12px 16px; font-size: 0.88rem; border-radius: 2px; }
+.form-msg.error   { background: #fdf0ef; color: var(--danger); border: 1px solid #f5c6c6; }
+.form-msg.success { background: #edf7ed; color: var(--sage);   border: 1px solid #b5dab5; }
+
+/* ── LOADING ── */
+.loading-text { color: var(--muted); font-style: italic; padding: 24px 0; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); color: var(--parchment);
+  padding: 60px 80px 40px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand .logo { display: block; margin-bottom: 14px; color: var(--parchment); }
+.footer-brand p { font-size: 0.88rem; color: rgba(245,240,232,0.5); line-height: 1.7; max-width: 260px; }
+.footer-col h5 {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 0.88rem; color: rgba(245,240,232,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--parchment); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+}
+.footer-bottom p { font-size: 0.8rem; color: rgba(245,240,232,0.35); }
+
+/* ── AUTH GATE ── */
+.auth-gate {
+  min-height: 70vh; display: flex;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 80px 32px;
+}
+.gate-inner { max-width: 500px; }
+.gate-inner .section-sub { margin: 0 auto 32px; }
+.gate-inner .hero-actions { justify-content: center; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  nav#navbar { padding: 14px 24px; }
+  footer { padding: 48px 24px 32px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}

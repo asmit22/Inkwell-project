@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Review — Inkwell</title>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/admin/css/admin.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<nav id="navbar" class="admin-nav">
+  <a class="logo" href="/">Inkwell<span class="logo-dot">.</span></a>
+  <span class="admin-badge">Admin</span>
+  <ul style="margin-left:auto">
+    <li><a href="#" id="nav-logout">Sign out</a></li>
+  </ul>
+</nav>
+
+<main class="admin-main">
+  <!-- Access denied — shown to non-admins -->
+  <div id="access-denied" style="display:none" class="auth-gate">
+    <div class="gate-inner">
+      <h2 class="section-title">Access Denied</h2>
+      <p class="section-sub">This page is for Inkwell administrators only.</p>
+      <a href="/" class="btn-primary">Go Home</a>
+    </div>
+  </div>
+
+  <div id="admin-wrap" style="display:none">
+    <div class="admin-header">
+      <div>
+        <div class="section-label">Editorial Dashboard</div>
+        <h1 class="section-title">Story Review Queue</h1>
+      </div>
+      <div class="queue-tabs">
+        <button class="tab-btn active" data-status="pending_review">Pending</button>
+        <button class="tab-btn" data-status="approved">Approved</button>
+        <button class="tab-btn" data-status="rejected">Rejected</button>
+      </div>
+    </div>
+
+    <div id="review-list" class="review-list">
+      <p class="loading-text">Loading queue…</p>
+    </div>
+  </div>
+</main>
+
+<!-- Reject modal -->
+<div id="reject-modal" class="modal-overlay" style="display:none">
+  <div class="modal">
+    <h3>Reject Story</h3>
+    <p>Provide feedback for the author (optional but recommended):</p>
+    <textarea id="reject-note" placeholder="e.g. Needs more editing, content policy issue…"></textarea>
+    <div class="modal-actions">
+      <button class="btn-secondary" id="modal-cancel">Cancel</button>
+      <button class="btn-danger"    id="modal-confirm">Reject Story</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/auth-state.js"></script>
+<script src="/admin/js/admin.js"></script>
+</body>
+</html>

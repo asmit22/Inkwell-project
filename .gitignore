@@ -1,0 +1,51 @@
+# ─────────────────────────────────────
+#  INKWELL — .gitignore
+# ─────────────────────────────────────
+
+# Documentation
+
+API.md
+CONTRIBUTING.md
+PROJECT_MANIFEST.md
+QUICKSTART.md
+SETUP.md
+
+# Environment variables — NEVER commit these
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Uploaded files (handled by Supabase Storage)
+uploads/
+tmp/
+
+# Secrets / keys
+*.pem
+*.key
+*.cert
+secrets/

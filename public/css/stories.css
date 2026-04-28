@@ -1,0 +1,30 @@
+/* stories.css */
+.stories-main { padding: 100px 80px 80px; }
+.stories-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 16px; }
+.search-input { padding: 10px 18px; border: 1.5px solid var(--border); font-size: 0.9rem; min-width: 240px; }
+.genre-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+.genre-btn { padding: 8px 18px; border: 1.5px solid var(--border); background: transparent; cursor: pointer; font-family:'DM Sans',sans-serif; font-size: 0.82rem; font-weight: 500; color: var(--muted); transition: all 0.2s; }
+.genre-btn:hover, .genre-btn.active { background: var(--ink); color: var(--parchment); border-color: var(--ink); }
+.stories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; }
+.story-card { background: white; border: 1px solid var(--border); overflow: hidden; cursor: pointer; transition: all 0.3s; }
+.story-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px var(--shadow); border-color: transparent; }
+.story-card:hover .card-title { color: var(--amber); }
+.card-thumb { height: 160px; display: flex; align-items: center; justify-content: center; position: relative; }
+.card-thumb-1{background:linear-gradient(135deg,#2c4a6e,#4a7ab5)}
+.card-thumb-2{background:linear-gradient(135deg,#8b3a1a,#c85a3a)}
+.card-thumb-3{background:linear-gradient(135deg,#4a6741,#6a9761)}
+.card-thumb-4{background:linear-gradient(135deg,#5a3e6b,#8a6eab)}
+.card-thumb-5{background:linear-gradient(135deg,#2a4a3a,#4a8a6a)}
+.card-thumb-6{background:linear-gradient(135deg,#6e4a2c,#a87a5a)}
+.thumb-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:900; font-style:italic; color:rgba(255,255,255,0.9); text-align:center; padding:20px; }
+.genre-badge { position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.45); color:rgba(255,255,255,0.85); padding:3px 10px; font-size:0.64rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; }
+.card-body { padding: 22px; }
+.card-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; margin-bottom:8px; }
+.card-excerpt { font-size:0.84rem; color:var(--muted); line-height:1.6; margin-bottom:16px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.card-meta { display:flex; align-items:center; justify-content:space-between; padding-top:14px; border-top:1px solid var(--border); }
+.card-author { font-size:0.76rem; color:var(--muted); }
+.card-author strong { color:var(--ink); }
+.card-stats { font-size:0.74rem; color:var(--muted); display:flex; gap:10px; }
+.no-stories { grid-column:1/-1; text-align:center; padding:60px; color:var(--muted); font-style:italic; }
+
+@media(max-width:900px){ .stories-main{padding:100px 24px 60px} }

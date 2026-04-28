@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discover Stories — Inkwell</title>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/stories.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="logo" href="/">Inkwell<span class="logo-dot">.</span></a>
+  <ul>
+    <li><a href="/stories">Discover</a></li>
+    <li id="nav-auth-links">
+      <a href="/auth/login">Log In</a>
+      <a href="/auth/signup" class="nav-cta">Start Writing</a>
+    </li>
+    <li id="nav-user-menu" style="display:none">
+      <span id="nav-username"></span>
+      <a href="/dashboard">My Dashboard</a>
+      <a href="/publish" class="nav-cta">Publish</a>
+      <a href="#" id="nav-logout">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<main class="stories-main">
+  <div class="stories-header">
+    <div>
+      <div class="section-label">Discover</div>
+      <h1 class="section-title">Published Stories</h1>
+      <p class="section-sub" id="stories-count">All editorially reviewed and approved.</p>
+    </div>
+    <input type="text" id="search" class="search-input" placeholder="Search stories…">
+  </div>
+
+  <div class="genre-filters">
+    <button class="genre-btn active" data-genre="all">All</button>
+    <button class="genre-btn" data-genre="Fantasy">Fantasy</button>
+    <button class="genre-btn" data-genre="Science Fiction">Sci-Fi</button>
+    <button class="genre-btn" data-genre="Mystery &amp; Thriller">Mystery</button>
+    <button class="genre-btn" data-genre="Romance">Romance</button>
+    <button class="genre-btn" data-genre="Horror">Horror</button>
+    <button class="genre-btn" data-genre="Literary Fiction">Literary</button>
+  </div>
+
+  <div id="stories-grid" class="stories-grid">
+    <p class="loading-text">Loading stories…</p>
+  </div>
+</main>
+
+<script src="/js/auth-state.js"></script>
+<script src="/js/stories.js"></script>
+</body>
+</html>
