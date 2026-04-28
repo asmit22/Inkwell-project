@@ -56,6 +56,7 @@ app.use('/auth/css', express.static(path.join(__dirname, '../auth/css')));
 app.use('/auth/js',  express.static(path.join(__dirname, '../auth/js')));
 app.use('/admin/css', express.static(path.join(__dirname, '../admin/css')));
 app.use('/admin/js',  express.static(path.join(__dirname, '../admin/js')));
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
 
 // ── Pages ──
 app.get('/',          (req, res) => injectEnv(path.join(__dirname, '../public/index.html'), res));

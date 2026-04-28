@@ -181,3 +181,17 @@ footer {
   footer { padding: 48px 24px 32px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
 }
+
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+  max-width: 160px;
+}
+a.logo {
+  background: none !important;
+  padding: 0;
+  line-height: 0;
+}
